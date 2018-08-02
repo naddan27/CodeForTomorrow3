@@ -21,14 +21,10 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  //Turn column 9 on, turn layer 1 on
-  digitalWrite(columns[9], HIGH);
-  digitalWrite(layers[1], LOW);
-  delay(1000);
-  digitalWrite(columns[9], LOW);
-  digitalWrite(layers[1], HIGH);
-  delay(1000);
+  //Turn column 4 on, turn layer 3 on
+  turnLEDOn(4, 3);
 }
+
 
 void turnLEDOn(int column, int layer) {
   //1. Turn the old LED off
@@ -37,6 +33,34 @@ void turnLEDOn(int column, int layer) {
 
   activeColumn = column;
   activeLayer = layer;
+  
   //2. Turn the new LED on
+  digitalWrite(columns[activeColumn], HIGH);
+  digitalWrite(layers[activeLayer], LOW);
+}
+
+//void testConcept(boolean[4][4][4] matrix, int hold){
+//  
+//}
+
+void animate(int delayT, int repeat) {
+  int columnInterest1[] = {12, 15, 12, 15};
+  int layerInterest1[] = {0, 0, 3, 3};
+
+  int columnInterest2[] = {13, 14, 13, 14};
+  int layerInterest2[] = {1, 1, 2, 2};
+
+  for (int j = 0; j < repeat; j++) {
+    for (int i = 0; i < 4; i++) {
+      turnLEDOn(columnInterest1[i], layerInterest1[i]);
+      delay(delayT);
+    }
+  }
+  for (int j = 0; j < repeat; j++){
+    for (int i = 0; i < 4; i++){
+      turnLEDOn(columnInterest2[i], layerInterest2[i]);
+      delay(delayT);
+    }
+  }
 }
 
