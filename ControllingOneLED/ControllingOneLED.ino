@@ -24,14 +24,14 @@ void loop() {
 }
 
 void snake() {
-  for (int i = 12; i < 16; i++) {
-    if ((i == 12) || (i == 14)) {
+  for (int i = 0; i < 4; i++) {
+    if ((i == 0) || (i == 2)) {
       for (int j = 0; j < 4; j++) {
         turnLEDOn(i, j);
         delay(300);
       }
     }
-    if ((i == 13) || (i == 15)){
+    if ((i == 1) || (i == 3)){
       for (int j = 3; j >= 0; j--){
         turnLEDOn(i, j);
         delay(300);
