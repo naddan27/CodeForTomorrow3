@@ -20,9 +20,19 @@ void setup() {
 
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  //Turn column 4 on, turn layer 3 on
-  turnLEDOn(4, 3);
+  simpleArrangement();
+}
+
+/*
+ * Turning all of the LEDs one by one with a 300ms delay in between
+ */
+void simpleArrangement(){
+  for (int i = 0; i < 4; i++){
+    for (int j = 0; j < 16; j++){
+      turnLEDOn(j, i);
+      delay(300);
+    }
+  }
 }
 
 
