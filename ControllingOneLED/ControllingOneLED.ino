@@ -24,19 +24,26 @@ void loop() {
 }
 
 void snake() {
+  int delayT = 200;
+  int repeat = 1000;
+  
   for (int i = 0; i < 4; i++) {
     if ((i == 0) || (i == 2)) {
       for (int j = 0; j < 4; j++) {
-        turnLEDOn(i, j);
-        delay(300);
+        for (int k = 0; k < repeat; k++){
+          for (int offset = 0; offset < 4; offset++){
+            turnLEDOn(i + (4 * offset), j);
+            delayMicroseconds(delayT);
+          }
+        }
       }
     }
-    if ((i == 1) || (i == 3)){
-      for (int j = 3; j >= 0; j--){
-        turnLEDOn(i, j);
-        delay(300);
-      }
-    }
+//    if ((i == 1) || (i == 3)){
+//      for (int j = 3; j >= 0; j--){
+//        turnLEDOn(i, j);
+//        delay(300);
+//      }
+//    }
   }
 }
 
