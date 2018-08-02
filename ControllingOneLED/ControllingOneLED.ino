@@ -20,7 +20,22 @@ void setup() {
 
 
 void loop() {
-  snake();
+  box(); 
+}
+
+void box(){
+  int delayT = 200;
+  int repeat = 1000;
+
+  int columnsInterest1[] = {12,15,12,15};
+  int layersInterest1[] = {0,0,3,3};
+
+  for (int i = 0; i < repeat; i++){
+    for (int interestPointer = 0; interestPointer < 4; interestPointer++){
+      turnLEDOn(columnsInterest1[interestPointer], layersInterest1[interestPointer]);
+      delayMicroseconds(delayT);
+    }
+  }
 }
 
 void snake() {
@@ -39,9 +54,13 @@ void snake() {
       }
     }
     if ((i == 1) || (i == 3)){
-      for (int j = 3; j >= 0; j--){
-        turnLEDOn(i, j);
-        delay(300);
+      for (int j = 3; j >= 0; j--) {
+        for (int k = 0; k < repeat; k++){
+          for (int offset = 0; offset < 4; offset++){
+            turnLEDOn(i + (4 * offset), j);
+            delayMicroseconds(delayT);
+          }
+        }
       }
     }
   }
