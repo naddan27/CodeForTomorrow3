@@ -31,6 +31,12 @@ void snake() {
         delay(300);
       }
     }
+    if ((i == 13) || (i == 15)){
+      for (int j = 3; j >= 0; j--){
+        turnLEDOn(i, j);
+        delay(300);
+      }
+    }
   }
 }
 
