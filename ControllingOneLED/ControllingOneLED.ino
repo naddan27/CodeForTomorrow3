@@ -38,12 +38,12 @@ void snake() {
         }
       }
     }
-//    if ((i == 1) || (i == 3)){
-//      for (int j = 3; j >= 0; j--){
-//        turnLEDOn(i, j);
-//        delay(300);
-//      }
-//    }
+    if ((i == 1) || (i == 3)){
+      for (int j = 3; j >= 0; j--){
+        turnLEDOn(i, j);
+        delay(300);
+      }
+    }
   }
 }
 
@@ -122,4 +122,3 @@ void animate(int delayT, int repeat) {
     }
   }
 }
-
