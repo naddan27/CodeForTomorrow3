@@ -20,15 +20,51 @@ void setup() {
 
 
 void loop() {
-  simpleArrangement();
+  snake();
+}
+
+void snake() {
+  for (int i = 12; i < 16; i++) {
+    if ((i == 12) || (i == 14)) {
+      for (int j = 0; j < 4; j++) {
+        turnLEDOn(i, j);
+        delay(300);
+      }
+    }
+  }
 }
 
 /*
- * Turning all of the LEDs one by one with a 300ms delay in between
- */
-void simpleArrangement(){
-  for (int i = 0; i < 4; i++){
-    for (int j = 0; j < 16; j++){
+   Turning LEDs on two a time
+*/
+void fionnnnnnaa() {
+  int delayT = 100;
+  int repeat = 1000;
+  //First set:
+  //Columns: 7, 4; Layer:3, 1
+  for (int i = 0; i < repeat; i++) {
+    turnLEDOn(7, 3);
+    delayMicroseconds(delayT);
+    turnLEDOn(3, 1);
+    delayMicroseconds(delayT);
+  }
+
+  //Second set:
+  //Columns: 8, 6; Layer: 2, 1
+  for (int i = 0; i < repeat; i++) {
+    turnLEDOn(8, 2);
+    delayMicroseconds(delayT);
+    turnLEDOn(6, 2);
+    delayMicroseconds(delayT);
+  }
+}
+
+/*
+   Turning all of the LEDs one by one with a 300ms delay in between
+*/
+void simpleArrangement() {
+  for (int i = 0; i < 4; i++) {
+    for (int j = 0; j < 16; j++) {
       turnLEDOn(j, i);
       delay(300);
     }
@@ -43,14 +79,14 @@ void turnLEDOn(int column, int layer) {
 
   activeColumn = column;
   activeLayer = layer;
-  
+
   //2. Turn the new LED on
   digitalWrite(columns[activeColumn], HIGH);
   digitalWrite(layers[activeLayer], LOW);
 }
 
 //void testConcept(boolean[4][4][4] matrix, int hold){
-//  
+//
 //}
 
 void animate(int delayT, int repeat) {
@@ -66,8 +102,8 @@ void animate(int delayT, int repeat) {
       delay(delayT);
     }
   }
-  for (int j = 0; j < repeat; j++){
-    for (int i = 0; i < 4; i++){
+  for (int j = 0; j < repeat; j++) {
+    for (int i = 0; i < 4; i++) {
       turnLEDOn(columnInterest2[i], layerInterest2[i]);
       delay(delayT);
     }
