@@ -20,8 +20,28 @@ void setup() {
 
 
 void loop() {
-  box(); 
+   learningAddString();
 }
+
+void learningAddString(){
+  String on = "";
+  on = addString(on, 800, "111,323,");
+  on = addString(on, 1600, "414,213,");
+}
+
+void dannyRainEffect(){
+  int randomColumn = random(16);
+  goDownColumn(randomColumn);
+}
+
+void goDownColumn(int column){
+  for (int layer = 1; layer < 4; layer++){
+    turnLEDOn(column, layer);
+    delay(350);
+  }
+}
+
+
 
 void box(){
   int delayT = 200;
@@ -148,6 +168,36 @@ void animate(int delayT, int repeat) {
     for (int i = 0; i < 4; i++) {
       turnLEDOn(columnInterest2[i], layerInterest2[i]);
       delay(delayT);
+    }
+  }
+}
+
+String addString(String on, int hold, String add) {
+  on += add;
+  lightArray(on, hold);
+  return on;
+}
+
+void lightArray(String on, int hold) {
+  for (int i = 0; i < hold; i += on.length()) {
+    for (int i = 0; i < on.length(); i += 4) {
+      //the number is going to be xyz
+      int x = on.substring(i, i + 1).toInt();
+
+      //Find y
+      int y = on.substring(i + 1, i + 2).toInt();
+
+      //Find z
+      int z = on.substring(i + 2, i + 3).toInt();
+
+      x = x - 1;
+      y = y - 1;
+      z = z - 1;
+
+      int column = x + (y * 4);
+      int layer = z;
+      turnLEDOn(column, layer);
+      delayMicroseconds(300);
     }
   }
 }
