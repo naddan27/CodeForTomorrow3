@@ -27,12 +27,22 @@ void box(){
   int delayT = 200;
   int repeat = 1000;
 
-  int columnsInterest1[] = {12,15,12,15};
-  int layersInterest1[] = {0,0,3,3};
+  int columnsInterest1[] = {12,15,12,15, 13, 14};
+  int layersInterest1[] = {0,0,3,3, 0,0 };
 
   for (int i = 0; i < repeat; i++){
-    for (int interestPointer = 0; interestPointer < 4; interestPointer++){
+    for (int interestPointer = 0; interestPointer < 6; interestPointer++){
       turnLEDOn(columnsInterest1[interestPointer], layersInterest1[interestPointer]);
+      delayMicroseconds(delayT/ 1.25);
+    }
+  }
+
+  int columnsInterest2[] = {13, 14, 13, 14};
+  int layersInterest2[] = {1, 1, 2, 2};
+
+  for (int i = 0; i < repeat; i++){
+    for (int ip = 0; ip < 4; ip++){
+      turnLEDOn(columnsInterest2[ip], layersInterest2[ip]);
       delayMicroseconds(delayT);
     }
   }
@@ -46,7 +56,7 @@ void snake() {
     if ((i == 0) || (i == 2)) {
       for (int j = 0; j < 4; j++) {
         for (int k = 0; k < repeat; k++){
-          for (int offset = 0; offset < 4; offset++){
+           for (int offset = 0; offset < 4; offset++){
             turnLEDOn(i + (4 * offset), j);
             delayMicroseconds(delayT);
           }
